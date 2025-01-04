@@ -1,0 +1,33 @@
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(360deg, #81a4f5, #a7c8f2, #81a4f5);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+    font-family: "Titillium Web", serif;
+}
+
+.text-shadow {
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+#map {
+    height: 400px;
+    /* Atur tinggi peta */
+    width: 100%;
+    /* Atur lebar peta */
+    border-radius: 10px;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.6);
+}
