@@ -1,4 +1,4 @@
-const apiKey = "e2cc3211ca8d5f4ed42cfaadadbec92d"; 
+const apiKey = "e2cc3211ca8d5f4ed42cfaadadbec92d";
 const button = document.getElementById("searchBtn");
 const cityInput = document.getElementById("cityInput");
 
@@ -21,7 +21,7 @@ document.getElementById("weatherForm").addEventListener("submit", (event) => {
 });
 
 window.onload = () => {
-    cityInput.focus();
+  cityInput.focus();
 };
 
 function getWeather(city) {
@@ -35,7 +35,7 @@ function getWeather(city) {
     })
     .then((data) => {
       displayWeather(data);
-      const { coord } = data; 
+      const { coord } = data;
       addMarker(coord.lat, coord.lon, city);
     })
     .catch((error) => {
@@ -49,13 +49,17 @@ function displayWeather(data) {
   const { name, main, weather } = data;
   const weatherResult = document.getElementById("weatherResult");
   weatherResult.innerHTML = `
-                <h2 class="text-2xl font-extrabold text-blue-600">Cuaca di ${name}</h2>
-                <p class="text-lg">Temperatur: <span class="font-bold">${main.temp} °C</span></p>
-                <p class="text-lg">Kelembapan: <span class="font-bold">${main.humidity}%</span></p>
-                <p class="text-lg">Kondisi: <span class="font-bold capitalize">${weather[0].description}</span></p>
-            `;
+                <h2 class="text-2xl font-extrabold text-blue-600">Weather in ${name}</h2>
+                <p class="text-lg">Temperature: <span class="font-bold">${main.temp} °C</span></p>
+                <p class="text-lg">Humidity: <span class="font-bold">${main.humidity}%</span></p>
+                <p class="text-lg">Condition: <span class="font-bold capitalize">${weather[0].description}</span></p>`;
   weatherResult.classList.remove("hidden");
-  weatherResult.classList.add("transition", "duration-800", "ease-in-out", "opacity-0");
+  weatherResult.classList.add(
+    "transition",
+    "duration-800",
+    "ease-in-out",
+    "opacity-0"
+  );
 
   void weatherResult.offsetWidth;
 
@@ -65,6 +69,6 @@ function displayWeather(data) {
 
 function addMarker(lat, lon, city) {
   const marker = L.marker([lat, lon]).addTo(map);
-  marker.bindPopup(`Kota: ${city}`).openPopup();
+  marker.bindPopup(`City: ${city}`).openPopup();
   map.setView([lat, lon], 12);
 }
